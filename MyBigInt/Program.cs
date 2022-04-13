@@ -20,8 +20,7 @@ namespace MyBigInt
             bigInt.Insert(num1);
             bigInt.Insert(num2);
 
-            bigInt.Equal(num1, num2);
-           
+            bigInt.More(num1, num2);
         }
     }
 }
