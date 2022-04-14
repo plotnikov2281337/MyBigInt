@@ -13,14 +13,17 @@ namespace MyBigInt
         static void Main(string[] args)
         {
 
-            var num1 = new List<int>();
-            var num2 = new List<int>();
-            BigInt bigInt = new BigInt();
+            BigInt bigInt = new BigInt("45552", 1);
+            BigInt bigInt2 = new BigInt("228", -1);
 
-            bigInt.Insert(num1);
+
+           /* bigInt.Insert(num1);
             bigInt.Insert(num2);
 
-            bigInt.More(num1, num2);
+            bigInt.Print(num1);
+
+
+            bigInt.More(num1, num2);*/
         }
     }
 }
