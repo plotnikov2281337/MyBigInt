@@ -8,13 +8,13 @@ namespace MyBigInt
 {
     internal class BigInt
     {
-        int positiveNum1 = 1;
-        int positiveNum2 = 1;
-
-        int Positiv = 1;
+        int Positive = 1;
+        string Num;
+        string Byte;
+        string Value;
 
         List<int> numbers = new List<int>();
-
+        List<int> result = new List<int>();
         public BigInt(string num, int positive)
         {
             for (int i = 0; i < num.Length; i++)
@@ -22,49 +22,124 @@ namespace MyBigInt
                 string s = (num[i].ToString());
                 numbers.Add(int.Parse(s));
             }
-            Positiv = positive;
-            Print();
-            Console.ReadKey();
-        }
+            Positive = positive;
+            Value = num;
+            Num = num;
+            if (positive == 1) Byte = "";
+            if (positive != 1) Byte = "-";
+            Console.WriteLine($"{Byte}{Num}");
 
-        public void Positive(List<int> num, int positive)
+        }       
+
+        public int CompareTo(BigInt num2)
         {
-            string s = String.Join("", num.ToArray());
-            if (s[0] == '-')
+            if (Positive != num2.Positive) return Positive.CompareTo(num2.Positive);
+            if (Num.Length != num2.Num.Length) return Num.Length.CompareTo(num2.Num.Length);
+            
+            for (int i = 0; i <= Num.Length; i++)
             {
-                positive = -1;
+                
+                if (Num[i] > num2.Num[i]) return 1;
+                if (Num[i] < num2.Num[i]) return -1;
             }
-            else positive = 1;
-        }
-
-        public int CompareTo(List<int> num1, List<int> num2)
-        {
-            Positive(num1, positiveNum1);
-            Positive(num2, positiveNum2);
-            if (positiveNum1 != positiveNum2) return positiveNum1.CompareTo(positiveNum2);
-            if (num1.Count != num2.Count) return num1.Count.CompareTo(num2.Count);
-
-            for (int i = 0; i < num1.Count; i++)
-            {
-                if (num1[i] > num2[i]) return 1;
-                if (num1[i] == num2[i]) return 0;
-                if (num1[i] < num2[i]) return -1;
-            }
-
 
             return 0;
         }
 
-        public void More(List<int> num1, List<int> num2)
-        {
-            string s1 = String.Join("", num1.ToArray());
-            string s2 = String.Join("", num2.ToArray());
+        public void More(BigInt num2)
+        {            
+            if (CompareTo(num2) == 1) Console.WriteLine($"{Byte}{Num} > {num2.Byte}{num2.Num}");
+            if (CompareTo(num2) == -1) Console.WriteLine($"{Byte}{Num} < {num2.Byte}{num2.Num}");
+            if (CompareTo(num2) == 0) Console.WriteLine($"{Byte}{Num} = {num2.Byte}{num2.Num}");
 
-            if (CompareTo(num1, num2) == 1) Console.WriteLine($"{s1} > {s2}");
-            if (CompareTo(num1, num2) == 0) Console.WriteLine($"{s1} = {s2}");
-            if (CompareTo(num1, num2) == -1) Console.WriteLine($"{s1} = {s2}"); 
         }
-    
+
+        public void equate(BigInt num2)
+        {
+
+        if  (Num.Length > num2.Num.Length)
+            {
+                int numLength = Num.Length - 1 - num2.Num.Length;
+
+                for (int i = 0; i <= numLength; i++)
+                {
+                    num2.numbers.Insert(0, 0 );
+
+                }
+                string s = string.Join("", num2.numbers.ToArray());
+                num2.Value = s;
+            }
+            if (Num.Length < num2.Num.Length)
+            {
+                int numLength = num2.Num.Length - 1 - Num.Length;
+                for (int i = 0; i <= numLength; i++)
+                {
+                    numbers.Insert(0, 0);
+                    
+                }
+                string s = string.Join("", numbers.ToArray());
+                Value = s;
+            }
+            
+            
+
+        }
+
+        public void Plus(BigInt num2)
+        {
+            
+            equate(num2);
+
+            for (int i = 0; i <= Value.Length; i++) result.Add(1);
+
+            int NumI4;
+            int NumI5 = 0;
+
+            for (int i = numbers.Count - 1; i >= 0; i-- )
+            {
+                string NumS1 = (Value[i].ToString());
+                string NumS2 = (num2.Value[i].ToString());
+
+                int NumI1 = int.Parse(NumS1);
+                int NumI2 = int.Parse(NumS2);
+
+
+                if (Positive == num2.Positive)
+                {
+                    int NumI3 = NumI1 + NumI2 + NumI5;
+                    NumI5 = 0;
+                    if (NumI3 < 10)
+                    {
+                        result.Insert(i, NumI3);
+                        result.RemoveAt(i+1) ;
+                    }
+
+
+                    else
+                    {
+                        NumI4 = NumI3 - 10;
+                        result.Insert(i, NumI4);
+                        result.RemoveAt(i+1);
+                        NumI4 = 0;
+                        NumI5 = 1;
+                    }
+
+
+                    
+                }
+
+                if (i == 0) result.RemoveAt(numbers.Count);
+
+            }
+            
+            string s = string.Join("", result.ToArray());
+                Console.WriteLine($"{Num} + {num2.Num} = {s}");
+
+
+            Console.ReadKey();
+        }
+
+
 
         public void Print()
         {
