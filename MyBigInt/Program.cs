@@ -26,8 +26,6 @@ namespace MyBigInt
             Console.WriteLine("Складываем: ");
 
             num1.Plus(num2);
-
-
         }
     }
 }
