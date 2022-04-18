@@ -15,7 +15,7 @@ namespace MyBigInt
 
             Console.WriteLine("Первое число: ");
 
-            BigInt num1 = new BigInt("199", 1);
+            BigInt num1 = new BigInt("99", 1);
             Console.WriteLine("Второе число: ");
             BigInt num2 = new BigInt("99", -1);
 

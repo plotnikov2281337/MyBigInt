@@ -104,7 +104,6 @@ namespace MyBigInt
 
         public void Plus(BigInt num2)
         {
-
             string s = "";
             int True = 0;
             equate(num2);
@@ -154,9 +153,14 @@ namespace MyBigInt
 
                 }
 
+                
 
                 if (Positive != num2.Positive)
                 {
+                    if (CompareTo(num2) == 0)
+                    {                       
+                        result.RemoveRange(0, result.Count);
+                    }
 
                     NumI5 = 0;
 
@@ -216,16 +220,29 @@ namespace MyBigInt
 
             result.RemoveAt(Value.Length);
 
+            string ByteS = "";
+
+            if (Positive <= 1)
+            {
+                ByteS =  "-";
+            }
+
+            if (num2.Positive <= 1)
+            {
+                ByteS =  "-";
+            }
+
+
             if (True == 0)
             {
                 s = string.Join("", result.ToArray());
-                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {s}");
+                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}{s}");
             }
 
             if (True == 1)
             {
                 s = string.Join("", result.ToArray());
-                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = 1{s}");
+                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}1{s}");
             }
 
 
