@@ -106,6 +106,7 @@ namespace MyBigInt
         {
             string s = "";
             int True = 0;
+            int True2 = 0;
             equate(num2);
 
             for (int i = 0; i <= Value.Length; i++) result.Add(1);
@@ -156,12 +157,7 @@ namespace MyBigInt
                 
 
                 if (Positive != num2.Positive)
-                {
-                    if (CompareTo(num2) == 0)
-                    {                       
-                        result.RemoveRange(0, result.Count);
-                    }
-
+                {                    
                     NumI5 = 0;
 
                     if (CompareTo(num2) == 1)
@@ -220,36 +216,45 @@ namespace MyBigInt
 
             result.RemoveAt(Value.Length);
 
-            string ByteS = "";
 
-            if (Positive <= 1)
+            if (result[0] != 0)
             {
-                ByteS =  "-";
+                string ByteS = "";
+
+                if (Positive <= 1)
+                {
+                    ByteS =  "-";
+                }
+
+                if (num2.Positive <= 1)
+                {
+                    ByteS =  "-";
+                }
+
+
+                if (True == 0)
+                {
+                    s = string.Join("", result.ToArray());
+                    Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}{s}");
+                }
+
+                if (True == 1)
+                {
+                    s = string.Join("", result.ToArray());
+                    Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}1{s}");
+                }
             }
 
-            if (num2.Positive <= 1)
+            if (result[0] == 0)
             {
-                ByteS =  "-";
+                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = 0");
             }
 
 
-            if (True == 0)
-            {
-                s = string.Join("", result.ToArray());
-                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}{s}");
-            }
-
-            if (True == 1)
-            {
-                s = string.Join("", result.ToArray());
-                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}1{s}");
-            }
-
-
-            Console.ReadKey();
+                Console.ReadKey();
         }
 
-
+        
 
         public void Print()
         {
