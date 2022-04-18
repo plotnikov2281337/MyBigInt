@@ -27,7 +27,6 @@ namespace MyBigInt
 
             num1.Plus(num2);
 
-            num1.Plus(num2);  
 
         }
     }
