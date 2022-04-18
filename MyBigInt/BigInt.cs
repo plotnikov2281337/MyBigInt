@@ -15,7 +15,9 @@ namespace MyBigInt
 
         List<int> numbers = new List<int>();
         List<int> result = new List<int>();
+
         List<int> help = new List<int>();
+
         public BigInt(string num, int positive)
         {
             for (int i = 0; i < num.Length; i++)
@@ -30,22 +32,36 @@ namespace MyBigInt
             if (positive != 1) Byte = "-";
             Console.WriteLine($"{Byte}{Num}");
 
+
         }
+
+             
+        
 
         public int CompareTo(BigInt num2)
         {
             if (Positive != num2.Positive) return Positive.CompareTo(num2.Positive);
             if (Num.Length != num2.Num.Length) return Num.Length.CompareTo(num2.Num.Length);
 
+
             for (int i = 0; i <= Num.Length; i++)
             {
 
                 if (Num[i] > num2.Num[i]) return 1;
                 if (Num[i] == num2.Num[i]) return 0;
+
+            }
+
+            for (int i = 0; i <= Num.Length; i++)
+            {
+                
+                if (Num[i] > num2.Num[i]) return 1;
+
                 if (Num[i] < num2.Num[i]) return -1;
             }
 
             return 0;
+
         }
 
         public void More(BigInt num2)
@@ -83,12 +99,12 @@ namespace MyBigInt
                 Value = s;
             }
 
-
-
         }
+
 
         public void Plus(BigInt num2)
         {
+
             string s = "";
             int True = 0;
             equate(num2);
@@ -211,6 +227,7 @@ namespace MyBigInt
                 s = string.Join("", result.ToArray());
                 Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = 1{s}");
             }
+
 
             Console.ReadKey();
         }
