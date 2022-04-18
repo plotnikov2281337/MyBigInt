@@ -105,18 +105,16 @@ namespace MyBigInt
         public void Plus(BigInt num2)
         {
             string s = "";
-            int True = 0;
-            int True2 = 0;
-            equate(num2);
+            int True = 0; // для сложения, если числа из десяток переходят в сотни
+            equate(num2); // добавление спереди нолей меньшему числу 
 
-            for (int i = 0; i <= Value.Length; i++) result.Add(1);
-            for (int i = 0; i <= Value.Length; i++) help.Add(1);
+            for (int i = 0; i <= Value.Length; i++) result.Add(1); // заполнение листа единичками для дальнейшей работы
 
 
             int NumI4;
             int NumI5 = 0;
 
-            for (int i = numbers.Count - 1; i >= 0; i--)
+            for (int i = numbers.Count - 1; i >= 0; i--) //цикл для всех условий
             {
                 string NumS1 = (Value[i].ToString());
                 string NumS2 = (num2.Value[i].ToString());
@@ -125,7 +123,7 @@ namespace MyBigInt
                 int NumI2 = int.Parse(NumS2);
 
 
-                if (Positive == num2.Positive)
+                if (Positive == num2.Positive) //если знаки равны
                 {
                     int NumI3 = NumI1 + NumI2 + NumI5;
                     NumI5 = 0;
@@ -156,11 +154,11 @@ namespace MyBigInt
 
                 
 
-                if (Positive != num2.Positive)
+                if (Positive != num2.Positive) // если знаки не равны, то есть один из знаков -
                 {                    
                     NumI5 = 0;
 
-                    if (CompareTo(num2) == 1)
+                    if (CompareTo(num2) == 1) // если первое число больше второго
                     {
                         NumI1 = NumI1 - NumI5;
                         NumI5 = 0;
@@ -184,7 +182,7 @@ namespace MyBigInt
 
                     }
 
-                    if (CompareTo(num2) == -1)
+                    if (CompareTo(num2) == -1) //если второе больше
                     {
                         NumI2 = NumI2 - NumI5;
                         NumI5 = 0;
@@ -221,12 +219,12 @@ namespace MyBigInt
             {
                 string ByteS = "";
 
-                if (Positive <= 1)
+                if (Positive < 1)
                 {
                     ByteS =  "-";
                 }
 
-                if (num2.Positive <= 1)
+                if (num2.Positive < 1)
                 {
                     ByteS =  "-";
                 }
