@@ -13,17 +13,15 @@ namespace MyBigInt
         static void Main(string[] args)
         {
 
-            BigInt bigInt = new BigInt("45552", 1);
-            BigInt bigInt2 = new BigInt("228", -1);
+            Console.WriteLine("Первое число: ");
+            BigInt num1 = new BigInt("199", 1);
+            Console.WriteLine("Второе число: ");
+            BigInt num2 = new BigInt("99", -1);
 
-
-           /* bigInt.Insert(num1);
-            bigInt.Insert(num2);
-
-            bigInt.Print(num1);
-
-
-            bigInt.More(num1, num2);*/
+            Console.WriteLine("< > == !=: ");
+            num1.More(num2);
+            Console.WriteLine("Складываем: ");
+            num1.Plus(num2);
         }
     }
 }
