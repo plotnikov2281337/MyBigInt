@@ -223,6 +223,7 @@ namespace MyBigInt
                 Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = 0");
                 Num = "0";
                 Positive = 1;
+                Byte = "";
             }
 
             else
@@ -235,27 +236,31 @@ namespace MyBigInt
                 {
                     ByteS =  "-";
                     Positive = -1;
+                    Byte = "-";
                 }
 
                 if (num2.Positive == -1)
                 {
                     ByteS =  "-";
                     Positive = -1;
+                    Byte = "-";
                 }
 
                 if (True == 0)
                 {
                     s = string.Join("", result.ToArray());
-                    Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = ");
                     Num = s;
+                    Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = {Byte}{Num}");
+                    
 
                 }
 
                 if (True == 1)
                 {
                     s = "1" + string.Join("", result.ToArray());
-                    Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = {ByteS}{s}");
                     Num = s;
+                    Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = {Byte}{Num}");
+                    
 
                 }
             }

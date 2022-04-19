@@ -19,7 +19,7 @@ namespace MyBigInt
             num1.PrintBigInt();
 
             Console.WriteLine("Второе число: ");
-            BigInt num2 = new BigInt("6000", 1);
+            BigInt num2 = new BigInt("6000", -1);
             num2.PrintBigInt();
 
             BigInt plus = new BigInt("", 1);
@@ -34,7 +34,6 @@ namespace MyBigInt
 
             Console.WriteLine("Складываем: ");
             plus.Plus(num1, num2);
-            plus.PrintBigInt();
 
             Console.ReadLine();
 
