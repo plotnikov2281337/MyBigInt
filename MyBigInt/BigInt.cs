@@ -30,12 +30,14 @@ namespace MyBigInt
             Num = num;
             if (positive == 1) Byte = "";
             if (positive != 1) Byte = "-";
-            Console.WriteLine($"{Byte}{Num}");
-
 
         }
 
-             
+        public void PrintBigInt()
+        {
+            Console.WriteLine($"{Byte}{Num}");
+        }
+            
         
 
         public int CompareTo(BigInt num2)
@@ -102,13 +104,13 @@ namespace MyBigInt
         }
 
 
-        public void Plus(BigInt num2)
+        public BigInt Plus(BigInt num1, BigInt num2)
         {
             string s = "";
             int True = 0; // для сложения, если числа из десяток переходят в сотни
             equate(num2); // добавление спереди нолей меньшему числу 
 
-            for (int i = 0; i <= Value.Length; i++) result.Add(1); // заполнение листа единичками для дальнейшей работы
+            for (int i = 0; i <= num1.Value.Length; i++) result.Add(1); // заполнение листа единичками для дальнейшей работы
 
 
             int NumI4;
@@ -116,14 +118,14 @@ namespace MyBigInt
 
             for (int i = numbers.Count - 1; i >= 0; i--) //цикл для всех условий
             {
-                string NumS1 = (Value[i].ToString());
+                string NumS1 = (num1.Value[i].ToString());
                 string NumS2 = (num2.Value[i].ToString());
 
                 int NumI1 = int.Parse(NumS1);
                 int NumI2 = int.Parse(NumS2);
 
 
-                if (Positive == num2.Positive) //если знаки равны
+                if (num1.Positive == num2.Positive) //если знаки равны
                 {
                     int NumI3 = NumI1 + NumI2 + NumI5;
                     NumI5 = 0;
@@ -136,36 +138,36 @@ namespace MyBigInt
 
                     else
                     {
-                        if (i == 0)                                                 
+                        if (i == 0)
                             True = 1;
-                        
+
 
 
                         NumI4 = NumI3 - 10;
                         result.Insert(i, NumI4);
                         result.RemoveAt(i+1);
                         NumI4 = 0;
-                        
+
                         NumI5 = 1;
-                    
+
                     }
 
                 }
 
-                
 
-                if (Positive != num2.Positive) // если знаки не равны, то есть один из знаков -
-                {                    
+
+                if (num1.Positive != num2.Positive) // если знаки не равны, то есть один из знаков -
+                {
                     NumI5 = 0;
 
-                    if (CompareTo(num2) == 1) // если первое число больше второго
+                    if (num1.numbers[0] > num2.numbers[0]) // если первое число больше второго
                     {
                         NumI1 = NumI1 - NumI5;
                         NumI5 = 0;
 
                         if (NumI1 < NumI2)
                         {
-                            int NumI3 = (NumI1 + 10 ) - NumI2;
+                            int NumI3 = (NumI1 + 10) - NumI2;
 
                             result.Insert(i, NumI3);
                             result.RemoveAt(i+1);
@@ -182,7 +184,7 @@ namespace MyBigInt
 
                     }
 
-                    if (CompareTo(num2) == -1) //если второе больше
+                    if (num1.numbers[0] < num2.numbers[0]) //если второе больше
                     {
                         NumI2 = NumI2 - NumI5;
                         NumI5 = 0;
@@ -210,48 +212,56 @@ namespace MyBigInt
 
 
 
-                }
+            }
 
             result.RemoveAt(Value.Length);
 
+            BigInt num3 = new BigInt("", 1);
 
-            if (result[0] != 0)
+            if (result.Count == 0)
             {
+                Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = 0");
+                Num = "0";
+                Positive = 1;
+            }
+
+            else
+            {
+
+
                 string ByteS = "";
 
-                if (Positive < 1)
+                if (num1.Positive == -1)
                 {
                     ByteS =  "-";
+                    Positive = -1;
                 }
 
-                if (num2.Positive < 1)
+                if (num2.Positive == -1)
                 {
                     ByteS =  "-";
+                    Positive = -1;
                 }
-
 
                 if (True == 0)
                 {
                     s = string.Join("", result.ToArray());
-                    Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}{s}");
+                    Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = ");
+                    Num = s;
+
                 }
 
                 if (True == 1)
                 {
-                    s = string.Join("", result.ToArray());
-                    Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = {ByteS}1{s}");
+                    s = "1" + string.Join("", result.ToArray());
+                    Console.WriteLine($"{num1.Byte}{num1.Num} + {num2.Byte}{num2.Num} = {ByteS}{s}");
+                    Num = s;
+
                 }
             }
 
-            if (result[0] == 0)
-            {
-                Console.WriteLine($"{Byte}{Num} + {num2.Byte}{num2.Num} = 0");
-            }
-
-
-                Console.ReadKey();
+            return num3;
         }
-
         
 
         public void Print()
