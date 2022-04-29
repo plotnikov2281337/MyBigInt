@@ -12,12 +12,12 @@ namespace MyBigInt
         static void Main(string[] args)
         {
             Console.WriteLine("Первое число: ");
-            BigInt num1 = new BigInt("1878564598745924756284798797654687984651465132163464699735", -1);
+            BigInt num1 = new BigInt("1871871438632868769753279259872985298759725297597572352399456283746237462397462934762934629476293", 1);
             num1.PrintBigInt();
             Console.WriteLine("");
 
             Console.WriteLine("Второе число: ");
-            BigInt num2 = new BigInt("1878564598745924756284798797654687984651465132163464699735", -1);
+            BigInt num2 = new BigInt("1012930129380148712934628374628346523746523289429847239842739482734982749874522", -1);
             num2.PrintBigInt();
             Console.WriteLine("");
 

@@ -126,15 +126,13 @@ namespace MyBigInt
                     NumI1 = NumI1 - NumI5;
                     NumI5 = 0;
 
-
-                    NumI5 = 0;
-
                     if (NumI1 < NumI2)
                     {
                         int NumI3 = (NumI1 + 10) - NumI2;
+
                         result.Insert(i, NumI3);
-                        result.RemoveAt(i + 1);
-                        
+                        result.RemoveAt(i+1);
+
                         NumI5 = 1;
                     }
 
@@ -142,32 +140,31 @@ namespace MyBigInt
                     {
                         int NumI3 = NumI1 - NumI2;
                         result.Insert(i, NumI3);
-                        result.RemoveAt(i + 1);
-                        
+                        result.RemoveAt(i+1);
                     }
 
                 }
 
                 if (num1.Compare(num2) == -1)
                 {
-                    NumI2 = NumI2 - NumI5;
+                    NumI1 = NumI1 - NumI5;
                     NumI5 = 0;
 
                     if (NumI1 > NumI2)
                     {
                         int NumI3 = (NumI2 + 10) - NumI1;
+
                         result.Insert(i, NumI3);
-                        result.RemoveAt(i + 1);
-                        
-                        NumI5 = NumI5 + 1;
+                        result.RemoveAt(i+1);
+
+                        NumI5 = 1;
                     }
 
                     else
                     {
                         int NumI3 = NumI2 - NumI1;
                         result.Insert(i, NumI3);
-                        result.RemoveAt(i + 1);
-                        
+                        result.RemoveAt(i+1);
                     }
 
                 }
@@ -178,21 +175,21 @@ namespace MyBigInt
                     NumI1 = NumI1 - NumI5;
                     NumI5 = 0;
 
-                    NumI5 = 0;
-
                     if (NumI1 < NumI2)
                     {
                         int NumI3 = (NumI1 + 10) - NumI2;
-                        result.RemoveAt(i);
+
                         result.Insert(i, NumI3);
+                        result.RemoveAt(i+1);
+
                         NumI5 = 1;
                     }
 
                     else
                     {
                         int NumI3 = NumI1 - NumI2;
-                        result.RemoveAt(i);
                         result.Insert(i, NumI3);
+                        result.RemoveAt(i+1);
                     }
 
                 }
